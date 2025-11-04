@@ -1,0 +1,14 @@
+[Unit]
+Description=Robot Voice Controller
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=/home/__USER__/robot-voice-dog
+ExecStart=/home/__USER__/robot-voice-dog/build/voice_controller /home/__USER__/robot-voice-dog/models/ggml-base.bin
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
